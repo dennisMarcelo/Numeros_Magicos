@@ -1,0 +1,29 @@
+{
+  "name": "numeros_magicos",
+  "version": "1.0.0",
+  "description": "Este projeto visa obter os números que mais se repetem na sena e na mega sena",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dennisMarcelo/projetos.git"
+  },
+  "keywords": [
+    "numeros_magicos"
+  ],
+  "author": "Dennis Marcelos dos Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dennisMarcelo/projetos/issues"
+  },
+  "homepage": "https://github.com/dennisMarcelo/projetos#readme",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "handlebars": "^4.7.6"
+  }
+}
