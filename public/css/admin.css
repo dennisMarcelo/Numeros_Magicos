@@ -1,0 +1,10 @@
+#botoes_pagina_principal_admin{
+    position: relative;
+    top: 25%;
+    margin: auto;
+    width: 50%;
+    min-height: 40%;
+    min-height: 200px;
+    background-color: beige;
+}
+
