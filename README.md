@@ -8,7 +8,7 @@
 * <a href="#Tecnologias">Tecnologias</a> 
 * <a href="#heavy_check_mark-Requisitos">Requisitos</a> 
 * <a href="#wrench-Utilização">Utilização</a> 
-* <a href="#arrow-up-Rotas">Rotas: </a>
+* <a href="#arrow-up-Rotas">Rotas</a>
 * <a href="#man-Sobre-mim">Sobre mim</a>
 * <a href="#Contato">Contato</a> 
 
