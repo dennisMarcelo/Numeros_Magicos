@@ -15,6 +15,7 @@
   <img src="https://img.shields.io/badge/%20%20CSS-Style-blue">
   <img src="https://img.shields.io/badge/HTML-Markup-orange">
   <img src="https://img.shields.io/badge/NodeJS-Server--Side-green">
+  <img src="https://img.shields.io/badge/MongoDB-DATABASE-green">
 </p>
 
 ### :man: Sobre Mim:
