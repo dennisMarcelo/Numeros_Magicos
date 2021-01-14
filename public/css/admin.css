@@ -1,10 +1,30 @@
 #botoes_pagina_principal_admin{
+    text-align: center;
     position: relative;
-    top: 25%;
-    margin: auto;
-    width: 50%;
-    min-height: 40%;
-    min-height: 200px;
-    background-color: beige;
+    margin: 60px auto;
+}
+
+.btn_admin_routs{
+    font-family: kristen-itc !important;
+    background-color: #8287b8;
+    border:none;
+    border-radius:30px;
+    display:inline-block;
+    cursor:pointer;
+    font-family:Verdana;
+    font-weight:bold;
+    font-size:4em;
+    margin: 0.9% ;
+    padding:6px 10px;
+    text-decoration:none;
+    outline: 0;
+}
+.btn_admin_routs:hover{
+    background-color: #989dcc;
+}
+
+.btn_admin_routs:active{
+    background-color: #6b73b4;
+    
 }
 
