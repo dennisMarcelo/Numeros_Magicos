@@ -47,7 +47,7 @@ footer{
 
 #banner{
     background-color:#8287b8;
-    height: 75%;
+    height: 130px;
 }
 #elements_banner{
     height: 100%;
@@ -67,11 +67,71 @@ footer{
     font-family: showcard-gothic!important;
     font-size: 338%;
 }
-#nav_header{
+nav{
+    position: relative;
     background-color: #211D1D;
-    min-height:25%;
-    color: #FFFFFF;
+    min-height: 50px;
     font-size: 2em;
+    
+}
+nav ul{
+    list-style: none;
+    position: relative;
+    margin:0;
+    padding: 0;
+}
+
+nav ul li{
+    width:170px;
+    height:50px;
+    float: left;
+    text-align:center;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+nav ul li:hover{
+    background-color: #424242
+}
+nav ul li:active{
+    background-color: #333333
+}
+label[for="bt_menu"]{
+    margin-left:20px;
+    display:none;
+    background-color:#424242;
+    color:#fff;
+    font-size:1.4em;
+    cursor:pointer;
+    font-family:arial;
+    width: 50px;
+    text-align: center;
+}
+label[for="bt_menu"]:active{
+    background-color:#272727;
+}
+#bt_menu{
+    display:none;
+}
+@media(max-width: 800px){
+    label[for="bt_menu"]{
+        display:block
+    }
+
+    #bt_menu:checked ~ ul{
+       display:block;
+    }
+
+    nav ul{
+        display:none;
+        
+    }
+
+    nav ul li{
+        width:100%;
+        float:none;
+    }   
 }
 
 /*--------------------outros------------------------*/
