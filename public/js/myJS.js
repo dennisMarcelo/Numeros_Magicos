@@ -13,11 +13,11 @@ function callForm(number){
                                 <br>
 
                                 <label for="concurso">Concurso</label>
-                                <input id="concurso" type="number">
+                                <input id="concurso" type="number" required>
                                 <br> 
 
                                 <labl  for="dataDoConcurso">Data do Concurso</labl>
-                                <input id="dataDoConcurso" type="date">
+                                <input id="dataDoConcurso" type="date" required>
                                 <br>
 
                                 <button type="submit">Enviar Formulário</button>

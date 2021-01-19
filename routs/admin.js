@@ -9,6 +9,13 @@ router.get("/cadastrarSequencia", (req,res)=>{
     res.render("admin/cadastrarSequencia")
 })
 
+router.get("/cadastrarUsuario", (req, res)=>{
+    res.render("admin/cadastrarUsuario")
+})
+
+router.get("/login", (req, res)=>{
+    res.render("admin/login")
+})
 
 
 //---\-------------------------------------------------------------------em produção
