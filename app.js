@@ -1,7 +1,10 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 const app = express();
 const admin = require("./routs/admin");
+const usuario = require("./routs/usuarios");
 const path  = require("path");
 const flash = require("connect-flash");
 const session = require("express-session")
@@ -13,7 +16,11 @@ const session = require("express-session")
         saveUninitialized:true
     }))
     app.use(flash())
-    
+
+  //body-parser
+    app.use(bodyParser.urlencoded({ extended:true }))
+    app.use(bodyParser.json())
+
   //handlebars
     app.engine("handlebars", exphbs({
         defaultlayout:"main"
@@ -25,13 +32,24 @@ const session = require("express-session")
         res.locals.success_msg = req.flash("success_msg");
         res.locals.error_msg = req.flash("error_msg");
         next();
-    }) 
+    })
+
+  //mongoose
+    mongoose.connect("mongodb://localhost/numerosmagicos", {useNewUrlParser: true, useUnifiedTopology:true})
+    .then(()=>{
+        console.log("Servidor conectado ao Mongo");
+    })
+    .catch((err)=>{
+        console.log("Erro ao conectar-se ao mongo, tipo de erro: "+err);
+    })
 
 //rotas
     app.get("/", (req, res)=>{
         res.render("index")
     })
     app.use("/admin", admin)
+
+    app.use("/usuario",usuario)
 
 //public
     app.use(express.static(path.join(__dirname,"public"))) //configura para reconhecer os arquivos na pasta public

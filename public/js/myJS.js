@@ -3,21 +3,21 @@ function callForm(number){
     let inputNumer = ""
 
     for(let cont = 1; cont <= number; cont++){
-       inputNumer += `<input  id="sequence${cont}" type="number"> ` 
+       inputNumer += `<input  name="sequencia" type="number min="0" max="99"> ` 
     }
 
-    $registerForm.innerHTML = ` <input id="typeSequence" type="hidden" value="${number}">
+    $registerForm.innerHTML = ` <input type="hidden" name="tipoSequencia" value="${number}">
 
-                                <label for="sequence">sequencia</label>
+                                <label for="sequencia">sequencia</label>
                                 ${inputNumer}
                                 <br>
 
                                 <label for="concurso">Concurso</label>
-                                <input id="concurso" type="number" required>
+                                <input name="concurso" type="number" min="1" max="9999" required>
                                 <br> 
 
                                 <labl  for="dataDoConcurso">Data do Concurso</labl>
-                                <input id="dataDoConcurso" type="date" required>
+                                <input name="dataDoConcurso" type="date" required>
                                 <br>
 
                                 <button type="submit">Enviar Formulário</button>

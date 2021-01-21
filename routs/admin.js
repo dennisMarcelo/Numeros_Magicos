@@ -9,13 +9,49 @@ router.get("/cadastrarSequencia", (req,res)=>{
     res.render("admin/cadastrarSequencia")
 })
 
-router.get("/cadastrarUsuario", (req, res)=>{
-    res.render("admin/cadastrarUsuario")
+router.post("/cadastrarSequencia", (req, res)=>{
+    let erros = [];
+    let tipoSequencia = req.body.tipoSequencia;
+    let sequencia = req.body.sequencia;
+    let concurso = req.body.concurso;
+    let dataDoConcurso = req.body.dataDoConcurso;
+    
+    //Tratar erros
+    for(let cont = 0; cont < sequencia.length; cont++){
+        for(let cont2 = cont+1; cont2 <= sequencia.length; cont2++){
+            if(sequencia[cont] == sequencia[cont2]){
+                erros.push({texto:"Os numeros não podem se repetir"})
+                cont = sequencia.length
+                break
+            }
+        }
+    }
+    //fim erros
+    
+    if(tipoSequencia == 5){
+        tratarQuina()
+    }else if(tipoSequencia == 6){
+        tratarSena()
+    }
+
+
+    function tratarQuina(){
+        if(erros.length > 0){
+            console.log(erros)
+            res.render("admin/cadastrarSequencia", {erros: erros})
+        }else{
+            //envie os dados para o banco aqui
+        }
+    }
+
+    function tratarSena(){
+    }
+
 })
 
-router.get("/login", (req, res)=>{
-    res.render("admin/login")
-})
+
+
+
 
 
 //---\-------------------------------------------------------------------em produção
