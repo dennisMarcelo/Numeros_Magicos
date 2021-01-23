@@ -1,1 +1,17 @@
-{{obj.sequencia}}
+<h1>Sequencias:</h1>
+<hr>
+{{#each objetos}}
+    <div>
+        <form>
+            <label>Numeros: <strong>{{sequencia}}</strong></label>
+            <br>
+            <label>Concurso: <strong>{{concurso}}</strong></label>
+            <br>
+            <button>Editar</button>
+            <button>Deletar</button>
+        </form>
+    </div>
+    <hr>
+    
+{{else}}
+{{/each}}

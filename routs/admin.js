@@ -76,20 +76,37 @@ router.post("/cadastrarSequencia", (req, res)=>{
 
 })
 
+router.get("/cadastrados/:parametro", (req,res)=>{
+    let sequencia = req.params.parametro;
 
+    if(sequencia == "quinas"){
+        Quina.find().lean()
+            .then((objetos)=> recuperarSequencia(objetos))
+            .catch((err)=> erroAoRecuperar(err))
+
+    }else if(sequencia == "senas"){
+        Sena.find().lean()
+            .then((objetos)=>recuperarSequencia(objetos))
+            .catch((err)=> erroAoRecuperar(err))
+    
+    }
+
+    function recuperarSequencia(objetos){ 
+        res.render("admin/sequenciaCadastrada",{objetos})
+    }
+    
+    function erroAoRecuperar(err){
+        req.flash("error_msg", "Erro ao recuperar sequencia, tipo de erro:" + err)
+        res.redirect('/admin')
+    }
+    
+    
+})
 
 
 
 
 //---\-------------------------------------------------------------------em produção
-router.get("/cadastrados/:parametro", (req,res)=>{
-    let obj = {
-        sequencia: req.params.parametro
-    }
-
-    res.render("admin/sequenciaCadastrada",{obj})
-})
-
 router.get("/testeflash",(req, res)=>{
     req.flash("success_msg", "O connect flash ta funcionandoooooo!!!!!!")
     res.redirect("/")
