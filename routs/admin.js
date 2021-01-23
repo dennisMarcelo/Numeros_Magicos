@@ -1,5 +1,10 @@
 const express = require("express");
-const router = express.Router()
+const router = express.Router();
+const mongoose = require("mongoose");
+require("../models/Quina");
+require("../models/Sena");
+const Quina = mongoose.model("quina");
+const Sena = mongoose.model("sena");
 
 router.get("/",(req,res)=>{
     res.render("admin/index")
@@ -26,25 +31,47 @@ router.post("/cadastrarSequencia", (req, res)=>{
             }
         }
     }
+
     //fim erros
     
-    if(tipoSequencia == 5){
-        tratarQuina()
-    }else if(tipoSequencia == 6){
-        tratarSena()
-    }
+    if(erros.length > 0){
+        res.render("admin/cadastrarSequencia", {erros: erros})
+    }else{
+        const novaSequencia = {
+            sequencia:sequencia,
+            concurso:concurso,
+            dataDoConcurso:dataDoConcurso,
+        }
 
-
-    function tratarQuina(){
-        if(erros.length > 0){
-            console.log(erros)
-            res.render("admin/cadastrarSequencia", {erros: erros})
-        }else{
-            //envie os dados para o banco aqui
+        if(tipoSequencia == 5){
+            tratarQuina(novaSequencia)
+        }else if(tipoSequencia == 6){
+            tratarSena(novaSequencia)
         }
     }
 
-    function tratarSena(){
+    function tratarQuina(novaSequencia){
+       new Quina(novaSequencia).save()
+        .then(()=>{
+            req.flash("success_msg", "Sequencia cadastrada com sucesso!")
+            res.redirect("/admin")
+        })
+        .catch(()=>{
+            req.flash("error_msg", "Erro ao salvar a sequencia!")
+            res.redirect("/admin")
+        })
+    }
+
+    function tratarSena(novaSequencia){
+       new Sena(novaSequencia).save()
+        .then(()=>{
+            req.flash("success_msg", "Sequencia cadastrada com sucesso!")
+            res.redirect("/admin")
+        })
+        .catch(()=>{
+            req.flash("error_msg", "Erro ao salvar a sequencia!")
+            res.redirect("/admin")
+        })
     }
 
 })
