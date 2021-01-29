@@ -1,0 +1,14 @@
+<h1>Sequencias de Senas:</h1>   
+<hr>
+
+{{#each objetos}}
+    <div>
+        <p>Numeros: <strong>{{sequencia}}</strong></p>
+        <p>Concurso: <strong>{{concurso}}</strong></p>
+        <a href="/admin/editarSequencia/sena/{{_id}}"><button>Editar</button></a>
+        <a href="/admin/deletarSequencia/sena/{{_id}}"><button>Deletar</button></a>
+    </div>
+    <hr>
+    
+{{else}}
+{{/each}}

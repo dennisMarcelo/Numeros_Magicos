@@ -17,7 +17,7 @@ function callForm(number){
                                 <br> 
 
                                 <label  for="dataDoConcurso">Data do Concurso</label>
-                                <input name="dataDoConcurso" type="date" required>
+                                <input name="dataDoConcurso" type="date" min="1900-01-01" required>
                                 <br>
 
                                 <button type="submit">Enviar Formulário</button>

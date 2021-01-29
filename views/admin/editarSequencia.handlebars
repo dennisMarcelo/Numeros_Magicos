@@ -1,0 +1,21 @@
+<h1>Editar {{sequenciaTipo}}</h1>
+{{obj.dataDoConcurso}}
+<form action="">
+    <input type="hidden" name="id" value="obj._id">
+
+    <label for="sequencia">sequencia</label>
+    {{#each obj.sequencia as |item|}}
+    <input  name="sequencia" type="number" min="0" max="60" value="{{item}}" required>
+    {{/each}}
+    <br>
+
+    <label for="concurso">Concurso</label>
+    <input name="concurso" type="number" min="1" max="9999" value="{{obj.concurso}}" required>
+    <br>
+
+    <label  for="dataDoConcurso">Data do Concurso</label>
+    <input name="dataDoConcurso" type="date" value="{{obj.dataDoConcurso}}" required>
+    <br>
+
+    <button type="submit">Enviar Formulário</button>
+</form>
