@@ -120,14 +120,92 @@ router.get("/editarSequencia/:sequenciaTipo/:id", (req, res)=>{
     }
 
     function rederizarPagina(obj){
-        console.log(obj)
         res.render("admin/editarSequencia",{obj,sequenciaTipo})
     }
 })
 
+router.post("/sequenciaEditada", (req, res)=>{
+    let tipoSequencia = req.body.tipoSequencia;
+    let id = req.body.id;
+    let sequencia = req.body.sequencia;
+    let concurso = req.body.concurso;
+    let dataDoConcurso = req.body.dataDoConcurso;
+
+
+    if(tipoSequencia == "quina"){
+        Quina.findOne({_id:id})
+            .then((quina)=>{
+                quina.sequencia = sequencia;
+                quina.concurso = concurso;
+                quina.dataDoConcurso = dataDoConcurso;
+
+                quina.save()
+                    .then(()=>{
+                        req.flash("success_msg","Sorteio modificado com sucesso!")
+                        res.redirect("/admin/cadastrados/quinas")
+                    })
+                    .catch((err)=>{
+                        req.flash("error_msg","Não foi possivel modificar os dados do sorteio selecionado! tipo de erro: ",err)
+                        res.redirect("/admin/cadastrados/quinas")
+                    })
+            })
+            .catch((err)=>{
+                req.flash("error_msg","Não foi possivel encotrar o sorteio para modificalo! tipo de erro: ",err)
+                res.redirect("/admin/cadastrados/quinas")
+            })
+
+    }else if(tipoSequencia == "sena"){
+        Sena.findOne({_id:id})
+            .then((sena)=>{
+                sena.sequencia = sequencia;
+                sena.concurso = concurso;
+                sena.dataDoConcurso = dataDoConcurso;
+                
+                sena.save()
+                    .then(()=>{
+                        req.flash("success_msg","Sorteio modificado com sucesso!")
+                        res.redirect("/admin/cadastrados/senas")
+                    })
+                    .catch((err)=>{
+                        req.flash("error_msg","Não foi possivel modificar os dados do sorteio selecionado! tipo de erro: ",err)
+                        res.redirect("/admin/cadastrados/senas")
+                    })
+            })
+            .catch((err)=>{
+                req.flash("error_msg","Não foi possivel encotrar o sorteio para modificalo! tipo de erro: ",err)
+                res.redirect("/admin/cadastrados/senas")
+            })
+    }
+
+})
+
+
 router.get("/deletarSequencia/:sequenciaTipo/:id",(req, res)=>{
     let sequenciaTipo = req.params.sequenciaTipo;
     let id = req.params.id
+
+    if(sequenciaTipo == "quina"){
+        Quina.deleteOne({_id:id})
+            .then(()=>{
+                req.flash("success_msg","Sorteio removido com sucesso")
+                res.redirect("/admin/cadastrados/quinas")
+            })
+            .catch((err)=>{
+                req.flash("error_msg","Não foi possivel remover o sorteio selecionado! Erro: ", err)
+                res.redirect("/admin/cadastrados/quinas")
+            })
+    }else if(sequenciaTipo == "sena"){
+        Sena.deleteOne({_id:id})
+            .then(()=>{
+                req.flash("success_msg","Sorteio removido com sucesso")
+                res.redirect("/admin/cadastrados/senas")
+            })
+            .catch((err)=>{
+                req.flash("error_msg","Não foi possivel remover o sorteio selecionado! Erro:",err)
+                res.redirect("/admin/cadastrados/senas")
+            })
+    }
+
 })
 
 

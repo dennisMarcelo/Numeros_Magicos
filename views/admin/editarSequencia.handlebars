@@ -1,7 +1,8 @@
-<h1>Editar {{sequenciaTipo}}</h1>
-{{obj.dataDoConcurso}}
-<form action="">
-    <input type="hidden" name="id" value="obj._id">
+<h1>Editar {{sequenciaTipo}}:</h1>
+
+<form id="" action="/admin/sequenciaEditada" method="POST">
+    <input type="hidden" name="id" value="{{obj._id}}">
+    <input type="hidden" name="tipoSequencia" value="{{sequenciaTipo}}">
 
     <label for="sequencia">sequencia</label>
     {{#each obj.sequencia as |item|}}

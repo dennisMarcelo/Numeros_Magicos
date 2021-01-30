@@ -23,7 +23,7 @@ body{
     grid-template-rows: auto auto auto;
 }
 header{
-    min-height: 19vh;
+    min-height: 17vh;
     grid-column-start: 1;
     grid-column-end: 4;
     box-shadow: 0 8px 69px #1111119c;
@@ -114,7 +114,7 @@ label[for="bt_menu"]:active{
 #bt_menu{
     display:none;
 }
-@media(max-width: 800px){
+@media(max-width: 858px){
     label[for="bt_menu"]{
         display:block
     }
