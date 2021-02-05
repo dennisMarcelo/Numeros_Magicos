@@ -5,6 +5,7 @@ require("../models/Quina");
 require("../models/Sena");
 const Quina = mongoose.model("quina");
 const Sena = mongoose.model("sena");
+const organizadorDeNumeros = require("../functions/organizadorDeNumeros"); 
 
 router.get("/",(req,res)=>{
     res.render("admin/index")
@@ -212,9 +213,7 @@ router.get("/deletarSequencia/:sequenciaTipo/:id",(req, res)=>{
 
 
 //---\-------------------------------------------------------------------em produção
-router.get("/testeflash",(req, res)=>{
-    req.flash("success_msg", "O connect flash ta funcionandoooooo!!!!!!")
-    res.redirect("/")
-})
+    let arr = [10,40,1,3,4,1,60,10,9,9,9,20,20,20,20,20,30,30,30,30,30]
+    organizadorDeNumeros(arr, "sena") //essa é a função que faz toda a mágica!!!!!!!!!!!!!!!!!
 
 module.exports = router;
