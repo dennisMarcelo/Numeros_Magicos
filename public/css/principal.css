@@ -23,14 +23,14 @@ body{
     grid-template-rows: auto auto auto;
 }
 header{
-    min-height: 17vh;
+    min-height: 13vh;
     grid-column-start: 1;
     grid-column-end: 4;
     box-shadow: 0 8px 69px #1111119c;
 }
 
 main{
-    min-height: 74.2vh;
+    min-height: 80vh;
     grid-column-start: 2;
     grid-column-end: 3;
 }
