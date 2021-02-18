@@ -39,10 +39,10 @@ const organizadorDeNumeros = function (arr, sorteioTipo){
                     collection.ultimaAtualizacao = Date()
                     collection.save()
                         .then(()=>{
-                            console.log("collection atualizada com sucesso.")
+                            console.log("collection <NumerosFrequentes> atualizada com sucesso.")
                         })
                         .catch(()=>{
-                            console.log("Não foi possivel atualizar a collection. Erro: ",err)
+                            console.log("Não foi possivel atualizar a collection <NumerosFrequentes> . Erro: ",err)
                         })
 
                 }else{
@@ -55,10 +55,10 @@ const organizadorDeNumeros = function (arr, sorteioTipo){
 
                     new ModelNumerosFrequentes(novaFrequencia).save()
                         .then(() => {
-                            console.log("Frequencia salva com sucesso.")
+                            console.log("Collection <NumerosFrequentes> criada e atualizada com sucesso.")
                         })
                         .catch((err) => {
-                            console.log("Frequencia não foi salva. Erro:", err)
+                            console.log("Não foi possivel criar a Collection <NumerosFrequentes>. Erro:", err)
                         })
                 }
             })
@@ -74,10 +74,10 @@ const organizadorDeNumeros = function (arr, sorteioTipo){
                     collection.ultimaAtualizacao = Date()
                     collection.save()
                         .then(()=>{
-                            console.log("collection atualizada com sucesso.")
+                            console.log("collection <NumerosFrequentes> atualizada com sucesso.")
                         })
                         .catch((err)=>{
-                            console.log("Não foi possivel atualizar a collection. Erro: ",err)
+                            console.log("Não foi possivel atualizar a collection <NumerosFrequentes>. Erro: ",err)
                         })
                 }else{
                     //criar nova collection
@@ -89,10 +89,10 @@ const organizadorDeNumeros = function (arr, sorteioTipo){
 
                     new ModelNumerosFrequentes(novaFrequencia).save()
                         .then(()=>{
-                            console.log("Frequencia salva com sucesso.")
+                            console.log("Collection <NumerosFrequentes> criada e atualizada com sucesso..")
                         })
                         .catch((err)=>{
-                            console.log("Frequencia não foi salva. Erro:", err)
+                            console.log("Não foi possivel criar a Collection <NumerosFrequentes>. Erro:", err)
                         });
                 }
             })
@@ -101,5 +101,4 @@ const organizadorDeNumeros = function (arr, sorteioTipo){
             });
     }
 }
-console.log(Date())
 module.exports = organizadorDeNumeros;
