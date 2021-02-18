@@ -33,8 +33,6 @@ router.post("/cadastrarSequencia", (req, res)=>{
             }
         }
     }
-
-
     //fim erros
     
     if(erros.length > 0){
@@ -47,27 +45,45 @@ router.post("/cadastrarSequencia", (req, res)=>{
         }
 
         if(tipoSequencia == 5){
-            tratarQuina(novaSequencia)
+            tratarQuina(novaSequencia, "quina")
         }else if(tipoSequencia == 6){
-            tratarSena(novaSequencia)
+            tratarSena(novaSequencia, "sena")
         }
     }
 
-    function tratarQuina(novaSequencia){
+    function tratarQuina(novaSequencia, tipoSequiencia){
        new Quina(novaSequencia).save()
         .then(()=>{
+            Quina.aggregate([{$unwind: "$sequencia"},{$group: {_id: null, sequencia:{$push: "$sequencia"}} },{$project:{_id:0, sequencia: "$sequencia"}}])
+                .then((todasQuinas)=>{
+                    //Organiza os numeros que vem do banco e deposi salva dentro da collection NumerosFrequentes!!!
+                    organizadorDeNumeros(todasQuinas[0].sequencia, tipoSequiencia)
+                })
+                .catch((err)=>{
+                    console.log("erro ",err)
+                })
+
             req.flash("success_msg", "Sequencia cadastrada com sucesso!")
             res.redirect("/admin")
         })
-        .catch(()=>{
-            req.flash("error_msg", "Erro ao salvar a sequencia!")
+        .catch((err)=>{
+            req.flash("error_msg", "Erro ao salvar a sequencia! Erro: "+ err)
             res.redirect("/admin")
         })
     }
 
-    function tratarSena(novaSequencia){
+    function tratarSena(novaSequencia, tipoSequiencia){
        new Sena(novaSequencia).save()
         .then(()=>{
+            Sena.aggregate([{$unwind: "$sequencia"},{$group: {_id: null, sequencia:{$push: "$sequencia"}} },{$project:{_id:0, sequencia: "$sequencia"}}])
+                .then((todasSenas)=>{
+                    console.log(todasSenas[0].sequencia, tipoSequiencia)
+                    //Organiza os numeros que vem do banco e deposi salva dentro da collection NumerosFrequentes!!!
+                    organizadorDeNumeros(todasSenas[0].sequencia, tipoSequiencia)
+                })
+                .catch((err)=>{
+                    console.log("erro ",err)
+                })     
             req.flash("success_msg", "Sequencia cadastrada com sucesso!")
             res.redirect("/admin")
         })
@@ -213,7 +229,5 @@ router.get("/deletarSequencia/:sequenciaTipo/:id",(req, res)=>{
 
 
 //---\-------------------------------------------------------------------em produção
-    let arr = [10,40,1,3,4,1,60,10,9,9,9,20,20,20,20,20,30,30,30,30,30]
-    organizadorDeNumeros(arr, "sena") //essa é a função que faz toda a mágica!!!!!!!!!!!!!!!!!
 
 module.exports = router;
