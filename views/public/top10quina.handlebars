@@ -1,0 +1,14 @@
+<h1>Top 10 Quina: </h1>
+
+<table>
+    <tr>
+        <th>Numero</th>
+        <th>QTD de Apariçõs</th>
+    </tr>
+    {{#each topNumeros}}
+        <tr>
+            <td>{{this.numero}}</td>
+            <td>{{this.frequencia}}</td>
+        </tr>
+    {{/each}} 
+</table>
