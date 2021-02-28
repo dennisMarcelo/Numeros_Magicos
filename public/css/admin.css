@@ -4,7 +4,7 @@
     margin: 60px auto;
 }
 
-.btn_admin_routs{
+.btn_routs{
     font-family: kristen-itc !important;
     background-color: #8287b8;
     border:none;
@@ -19,11 +19,11 @@
     text-decoration:none;
     outline: 0;
 }
-.btn_admin_routs:hover{
+.btn_routs:hover{
     background-color: #989dcc;
 }
 
-.btn_admin_routs:active{
+.btn_routs:active{
     background-color: #6b73b4;
     
 }

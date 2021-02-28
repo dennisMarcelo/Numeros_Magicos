@@ -77,7 +77,6 @@ router.post("/cadastrarSequencia", (req, res)=>{
         .then(()=>{
             Sena.aggregate([{$unwind: "$sequencia"},{$group: {_id: null, sequencia:{$push: "$sequencia"}} },{$project:{_id:0, sequencia: "$sequencia"}}])
                 .then((todasSenas)=>{
-                    console.log(todasSenas[0].sequencia, tipoSequiencia)
                     //Organiza os numeros que vem do banco e deposi salva dentro da collection NumerosFrequentes!!!
                     organizadorDeNumeros(todasSenas[0].sequencia, tipoSequiencia)
                 })

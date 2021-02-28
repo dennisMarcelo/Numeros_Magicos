@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const app = express();
 const admin = require("./routs/admin");
 const usuario = require("./routs/usuarios");
+const public = require("./routs/public")
 const path  = require("path");
 const flash = require("connect-flash");
 const session = require("express-session")
@@ -50,6 +51,8 @@ const session = require("express-session")
     app.use("/admin", admin)
 
     app.use("/usuario",usuario)
+
+    app.use("/public", public)
 
 //public
     app.use(express.static(path.join(__dirname,"public"))) //configura para reconhecer os arquivos na pasta public
