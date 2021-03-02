@@ -19,9 +19,8 @@ const session = require("express-session")
     app.use(flash())
 
   //body-parser
-    app.use(bodyParser.urlencoded({ extended:true }))
-    app.use(bodyParser.json())
-
+    app.use(bodyParser.urlencoded({extended:true}));
+    app.use(bodyParser.json());
   //handlebars
     app.engine("handlebars", exphbs({
         defaultlayout:"main"
