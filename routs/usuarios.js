@@ -45,8 +45,22 @@ router.post("/registro", (req, res) => {
         res.render("usuario/cadastrarUsuario", {
             erros: erros
         })
+
     } else {
-        //parei aqui
+        Usuario.findOne({email: req.body.email}).lean()
+            .then((usuario) => {
+                if(usuario){
+                    req.flash("error_msg", "Email já cadastrado, utilize um email diferente.")
+                    res.redirect("/usuario/cadastrarUsuario")
+                }else{
+                    //falta salvar os dados, e hashear a senha.
+                }
+            })
+            .catch(() => {
+                req.flash("error_msg", "Ouve um erro interno na hora de registrar usuario, tente novamente!")
+                res.redirect("/usuario/cadastrarUsuario")
+            })
+
     }
 
 })
