@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 require("../models/Usuarios");
 const Usuario = mongoose.model("usuario");
+const bcrypt = require("bcrypt")
 
 router.get("/cadastrarUsuario", (req, res) => {
     res.render("usuario/cadastrarUsuario")
@@ -53,11 +54,36 @@ router.post("/registro", (req, res) => {
                     req.flash("error_msg", "Email já cadastrado, utilize um email diferente.")
                     res.redirect("/usuario/cadastrarUsuario")
                 }else{
-                    //falta salvar os dados, e hashear a senha.
+                    const novoUsuario = new Usuario({
+                        nome: req.body.nome,
+                        email: req.body.email,
+                        senha: req.body.senha
+                    })
+                    //Criptografar senha
+                    bcrypt.genSalt(10, (erro, salt) => {
+                        bcrypt.hash(novoUsuario.senha, salt, (erro, hash) => {
+                            if(erro){
+                                req.flash("error_msg", "Erro ao salvar senha!");
+                                res.redirect("/usuario/cadastrarUsuario");
+                            }
+
+                            novoUsuario.senha = hash;
+
+                            novoUsuario.save()
+                                .then(() => {
+                                    req.flash("success_msg", "Senha salva com sucesso!");
+                                    res.redirect("/")
+                                })
+                                .catch((err) => {
+                                    req.flash("error_msg", "Houve um erro ao salvar novo usuário.");
+                                })
+                        });
+                    });
+                    
                 }
             })
-            .catch(() => {
-                req.flash("error_msg", "Ouve um erro interno na hora de registrar usuario, tente novamente!")
+            .catch((err) => {
+                req.flash("error_msg", "Ouve um erro interno na hora de registrar usuario, tente novamente! ERRO: "+err)
                 res.redirect("/usuario/cadastrarUsuario")
             })
 
