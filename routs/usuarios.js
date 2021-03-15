@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 require("../models/Usuarios");
 const Usuario = mongoose.model("usuario");
 const bcrypt = require("bcrypt")
+const passport = require('passport');
 
 router.get("/cadastrarUsuario", (req, res) => {
     res.render("usuario/cadastrarUsuario")
@@ -86,13 +87,19 @@ router.post("/registro", (req, res) => {
                 req.flash("error_msg", "Ouve um erro interno na hora de registrar usuario, tente novamente! ERRO: "+err)
                 res.redirect("/usuario/cadastrarUsuario")
             })
-
     }
-
 })
 
 router.get("/login", (req, res) => {
     res.render("usuario/login")
 })
+
+router.post("/validatelogin", (req, res, next) => {
+    passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/usuario/login',
+        failureFlash: true,
+    })(req, res, next);
+});
 
 module.exports = router

@@ -8,7 +8,9 @@ const usuario = require("./routs/usuarios");
 const public = require("./routs/public")
 const path  = require("path");
 const flash = require("connect-flash");
-const session = require("express-session")
+const session = require("express-session");
+const passport = require("passport");
+require('./config/auth')(passport)
 //configuração
   //sessão
     app.use(session({
@@ -16,6 +18,8 @@ const session = require("express-session")
         resave:true,
         saveUninitialized:true
     }))
+    app.use(passport.initialize());
+    app.use(passport.session());
     app.use(flash())
 
   //body-parser
@@ -31,6 +35,7 @@ const session = require("express-session")
     app.use((req,res,next)=>{
         res.locals.success_msg = req.flash("success_msg");
         res.locals.error_msg = req.flash("error_msg");
+        res.locals.error = req.flash("error");
         next();
     })
 
