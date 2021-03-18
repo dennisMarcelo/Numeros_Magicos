@@ -11,6 +11,8 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 require('./config/auth')(passport)
+const {validAdmin} = require('./helpers/validAdmin');
+
 //configuração
   //sessão
     app.use(session({
@@ -27,7 +29,8 @@ require('./config/auth')(passport)
     app.use(bodyParser.json());
   //handlebars
     app.engine("handlebars", exphbs({
-        defaultlayout:"main"
+        helpers: {validAdmin},
+        defaultlayout:"main",
     }))
     app.set('view engine', "handlebars");
   

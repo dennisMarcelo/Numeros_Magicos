@@ -14,13 +14,15 @@
                 <a href="/">home</a> 
             </li>
             
-            <li> 
-                <a href="/admin">admin</a> 
-            </li>
+            {{#if (validAdmin user)}}
+                <li> 
+                    <a href="/admin">admin</a>
+                </li>
+            {{/if}}
 
             {{#if user}}
                 <li>
-                    <a href="#">logout</a>
+                    <a href="/usuario/logout">logout</a>
                 </li>
             {{else}}
                 <li>
@@ -30,8 +32,6 @@
                     <a href="/usuario/cadastrarUsuario">cadastrar</a>
                 </li>
             {{/if}}
-            
-            
         </ul>
     </nav>
 </header>
