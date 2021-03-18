@@ -5,17 +5,18 @@ require("../models/Quina");
 require("../models/Sena");
 const Quina = mongoose.model("quina");
 const Sena = mongoose.model("sena");
-const organizadorDeNumeros = require("../functions/organizadorDeNumeros"); 
+const organizadorDeNumeros = require("../functions/organizadorDeNumeros");
+const {eAdmin} = require('../helpers/eAdmin');
 
-router.get("/",(req,res)=>{
+router.get("/", eAdmin, (req,res)=>{
     res.render("admin/index")
 });
 
-router.get("/cadastrarSequencia", (req,res)=>{
+router.get("/cadastrarSequencia", eAdmin, (req,res)=>{
     res.render("admin/cadastrarSequencia")
 })
 
-router.post("/cadastrarSequencia", (req, res)=>{
+router.post("/cadastrarSequencia", eAdmin, (req, res)=>{
     let erros = [];
     let tipoSequencia = req.body.tipoSequencia;
     let sequencia = req.body.sequencia;
@@ -94,7 +95,7 @@ router.post("/cadastrarSequencia", (req, res)=>{
 
 })
 
-router.get("/cadastrados/:parametro", (req,res)=>{
+router.get("/cadastrados/:parametro", eAdmin, (req,res)=>{
     let sequenciaTipo = req.params.parametro;
 
     if(sequenciaTipo == "quinas"){
@@ -120,7 +121,7 @@ router.get("/cadastrados/:parametro", (req,res)=>{
 
 })
 
-router.get("/editarSequencia/:sequenciaTipo/:id", (req, res)=>{
+router.get("/editarSequencia/:sequenciaTipo/:id", eAdmin, (req, res)=>{
     let sequenciaTipo = req.params.sequenciaTipo;
     let id = req.params.id
 
@@ -140,7 +141,7 @@ router.get("/editarSequencia/:sequenciaTipo/:id", (req, res)=>{
     }
 })
 
-router.post("/sequenciaEditada", (req, res)=>{
+router.post("/sequenciaEditada", eAdmin, (req, res)=>{
     let tipoSequencia = req.body.tipoSequencia;
     let id = req.body.id;
     let sequencia = req.body.sequencia;
@@ -196,7 +197,7 @@ router.post("/sequenciaEditada", (req, res)=>{
 })
 
 
-router.get("/deletarSequencia/:sequenciaTipo/:id",(req, res)=>{
+router.get("/deletarSequencia/:sequenciaTipo/:id", eAdmin, (req, res)=>{
     let sequenciaTipo = req.params.sequenciaTipo;
     let id = req.params.id
 
@@ -223,10 +224,5 @@ router.get("/deletarSequencia/:sequenciaTipo/:id",(req, res)=>{
     }
 
 })
-
-
-
-
-//---\-------------------------------------------------------------------em produção
 
 module.exports = router;

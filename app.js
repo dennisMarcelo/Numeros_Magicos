@@ -8,7 +8,11 @@ const usuario = require("./routs/usuarios");
 const public = require("./routs/public")
 const path  = require("path");
 const flash = require("connect-flash");
-const session = require("express-session")
+const session = require("express-session");
+const passport = require("passport");
+require('./config/auth')(passport)
+const {validAdmin} = require('./helpers/validAdmin');
+
 //configuração
   //sessão
     app.use(session({
@@ -16,15 +20,17 @@ const session = require("express-session")
         resave:true,
         saveUninitialized:true
     }))
+    app.use(passport.initialize());
+    app.use(passport.session());
     app.use(flash())
 
   //body-parser
-    app.use(bodyParser.urlencoded({ extended:true }))
-    app.use(bodyParser.json())
-
+    app.use(bodyParser.urlencoded({extended:true}));
+    app.use(bodyParser.json());
   //handlebars
     app.engine("handlebars", exphbs({
-        defaultlayout:"main"
+        helpers: {validAdmin},
+        defaultlayout:"main",
     }))
     app.set('view engine', "handlebars");
   
@@ -32,6 +38,8 @@ const session = require("express-session")
     app.use((req,res,next)=>{
         res.locals.success_msg = req.flash("success_msg");
         res.locals.error_msg = req.flash("error_msg");
+        res.locals.error = req.flash("error");
+        res.locals.user = req.user || null;
         next();
     })
 
