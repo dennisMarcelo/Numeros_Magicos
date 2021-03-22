@@ -1,0 +1,95 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "showcard-gothic";
+  src: url("../fonts/showcard-gothic.ttf");
+}
+
+@font-face {
+  font-family: "kristen-itc";
+  src: url("../fonts/kristen-itc.ttf");
+}
+
+* {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.9em;
+}
+
+h3 {
+  font-size: 1.8em;
+}
+
+h4 {
+  font-size: 1.7em;
+}
+
+h5 {
+  font-size: 1.6em;
+}
+
+h6 {
+  font-size: 1.5em;
+}
+
+p {
+  font-size: 1.3em;
+}
+
+li {
+  font-size: 1.2em;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner {
+  background-color: #8287b8;
+  padding: 10px;
+  font-family: "showcard-gothic", sans-serif;
+  letter-spacing: 3px;
+  font-size: 14px;
+  text-align: center;
+}
+
+#img_banner {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+/* ----bootstrap---- */
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}

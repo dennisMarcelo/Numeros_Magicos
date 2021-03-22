@@ -1,0 +1,9 @@
+{
+    "extends": "stylelint-config-standard",
+    "ignoreFiles": [
+            "**/*.js", 
+            "./public/css/admin.css", 
+            "./public/css/bootstrap.css",
+            "./public/css/principal.css"
+        ]
+}
