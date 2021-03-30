@@ -20,6 +20,11 @@
   padding: 0;
 }
 
+html,
+body {
+  font-family: "kristen-itc", arial, sans-serif;
+}
+
 h1 {
   font-size: 2em;
 }
@@ -61,16 +66,69 @@ li {
 
 .banner {
   background-color: #8287b8;
-  padding: 10px;
+  padding: 20px 10px 10px;
   font-family: "showcard-gothic", sans-serif;
   letter-spacing: 3px;
   font-size: 14px;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 #img_banner {
   width: 80px;
   margin-bottom: 10px;
+}
+
+/* ----- menu ---- */
+#bt_menu {
+  display: none;
+}
+
+#dropdown-menu-checkbox {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 2;
+}
+
+label[for="bt_menu"] {
+  background-color: #211d1d;
+  color: #fff;
+  font-size: 2em;
+  padding: 2px;
+  cursor: pointer;
+  font-family: sans-serif, arial;
+  border-radius: 7px;
+}
+
+label[for="bt_menu"]:active {
+  background-color: #43304b;
+}
+
+.menu-show {
+  margin-top: 0;
+}
+
+nav {
+  background-color: #211d1d;
+  position: relative;
+  transition: all 0.9s;
+  margin-top: -132px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.23em;
+  display: block;
+  width: 100%;
+  border: 1px solid black;
+  padding: 5px 20px;
+}
+
+nav ul li a:active {
+  background-color: #3d3b3b;
 }
 
 /* ----bootstrap---- */
