@@ -117,7 +117,7 @@ nav {
   transition: all 0.5s;
   margin-top: -132px;
   width: 100%;
-  box-shadow: 0 8px 69px #1111119c;
+  box-shadow: 0 1px 20px #1111119c;
 }
 
 nav ul li a {
@@ -143,11 +143,11 @@ main {
   align-items: baseline;
   width: 100%;
   min-height: 73%;
-  margin: 20px 0 50px;
+  margin: 36px 0 50px;
 }
 
 main .contents-container {
-  width: 90%;
+  width: 95%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -166,6 +166,7 @@ main .contents-container {
   font-weight: bold;
   outline: none;
   width: 98%;
+  box-shadow: 0 4px 7px #1111119c;
 }
 
 .row {
@@ -222,6 +223,23 @@ footer {
 }
 
 /* ultimos sorteios */
+.dados-soteio {
+  margin: 10px 0;
+  padding: 5px;
+  background-color: #8287b8;
+  width: 100%;
+  box-shadow: 0 9px 13px #1111119c;
+}
+
+.dados-soteio h4,
+.dados-soteio p {
+  margin: 10px 0;
+}
+
+.dados-soteio b {
+  font-size: 1em;
+  font-weight: bold;
+}
 
 /* ----bootstrap---- */
 .alert {

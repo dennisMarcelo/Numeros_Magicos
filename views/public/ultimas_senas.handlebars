@@ -1,12 +1,15 @@
-<h1>Ultimas Senas Sorteadas:</h1>
-{{#each ultimos}}
-    <h4>
-        Sorteio: 
-        {{#each this.sequencia}}
-            {{this}} - 
-        {{/each}}
-    </h4>
-    <p>Conscurso: {{this.concurso}}</p>
-    <p>Data Do Concurso: {{this.dataDoConcurso}}</p>
-    <hr>
-{{/each}}
+<div class="contents-container">
+    <h1>Ultimas Senas Sorteadas:</h1>
+    {{#each ultimos}}
+      <div class="dados-soteio">
+        <h4>
+            Sorteio: 
+            {{#each this.sequencia}}
+                {{this}}
+            {{/each}}
+        </h4>
+        <p><b>Conscurso:</b> {{this.concurso}}</p>
+        <p><b>Data Do Concurso:</b> {{this.dataDoConcurso}}</p>
+    </div>
+    {{/each}}
+</div>
