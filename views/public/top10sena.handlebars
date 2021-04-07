@@ -1,14 +1,16 @@
-<h1>Top 10 Sena:</h1>
+<div class="contents-container">
+    <h1>Top 10 Sena</h1>
 
-<table>
-    <tr>
-        <th>Numero</th>
-        <th>QTD de Apariçõs</th>
-    </tr>
-    {{#each topNumeros}}
+    <table>
         <tr>
-            <td>{{this.numero}}</td>
-            <td>{{this.frequencia}}</td>
+            <th>Numero</th>
+            <th>QTD de Apariçõs</th>
         </tr>
-    {{/each}} 
-</table>
+        {{#each topNumeros}}
+            <tr>
+                <td>{{this.numero}}</td>
+                <td>{{this.frequencia}}</td>
+            </tr>
+        {{/each}} 
+    </table>
+</div>

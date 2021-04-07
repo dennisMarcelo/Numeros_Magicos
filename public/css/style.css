@@ -1,0 +1,263 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "showcard-gothic";
+  src: url("../fonts/showcard-gothic.ttf");
+}
+
+@font-face {
+  font-family: "kristen-itc";
+  src: url("../fonts/kristen-itc.ttf");
+}
+
+* {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: "kristen-itc", arial, sans-serif;
+  height: 100%;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.9em;
+}
+
+h3 {
+  font-size: 1.8em;
+}
+
+h4 {
+  font-size: 1.7em;
+}
+
+h5 {
+  font-size: 1.6em;
+}
+
+h6 {
+  font-size: 1.5em;
+}
+
+p {
+  font-size: 1.3em;
+}
+
+li {
+  font-size: 1.2em;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.banner {
+  align-items: center;
+  background-color: #8287b8;
+  padding: 20px 10px 10px;
+  font-family: "showcard-gothic", sans-serif;
+  letter-spacing: 3px;
+  font-size: 14px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+#img_banner {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+/* ----- menu ---- */
+#bt_menu {
+  display: none;
+}
+
+#dropdown-menu-checkbox {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 2;
+}
+
+label[for="bt_menu"] {
+  background-color: #211d1d;
+  color: #fff;
+  font-size: 2em;
+  padding: 2px;
+  cursor: pointer;
+  font-family: sans-serif, arial;
+  border-radius: 7px;
+}
+
+label[for="bt_menu"]:active {
+  background-color: #43304b;
+}
+
+.menu-show {
+  margin-top: 0;
+}
+
+nav {
+  background-color: #211d1d;
+  position: absolute;
+  transition: all 0.5s;
+  margin-top: -132px;
+  width: 100%;
+  box-shadow: 0 1px 20px #1111119c;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.23em;
+  display: block;
+  width: 100%;
+  border: 1px solid black;
+  padding: 5px 20px;
+}
+
+main .contents-container a {
+  flex-grow: 1;
+  text-align: center;
+}
+
+nav ul li a:active {
+  background-color: #3d3b3b;
+}
+
+main {
+  align-items: baseline;
+  width: 100%;
+  min-height: 73%;
+  margin: 36px 0 50px;
+}
+
+main .contents-container {
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn_item {
+  font-family: "kristen-itc", verdana, sans-serif;
+  background-color: #8287b8;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 5px;
+  padding: 20px 10px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  width: 98%;
+  box-shadow: 0 4px 7px #1111119c;
+}
+
+.row {
+  width: 100%;
+}
+
+.btn_item:hover {
+  background-color: #989dcc;
+}
+
+.btn_item:active {
+  background-color: #6b73b4;
+}
+
+footer {
+  padding-top: 15px;
+  width: 100%;
+  background-color: #211d1d;
+  min-height: 10%;
+  text-align: center;
+  box-shadow: 8px 0 69px #1111119c;
+}
+
+.link-footer {
+  color: white;
+}
+
+/* trabalhando no top10 */
+.contents-container h1 {
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.contents-container table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+
+.contents-container tr,
+.contents-container th,
+.contents-container td {
+  border: 1px solid black;
+}
+
+.contents-container th {
+  font-size: 1.2em;
+}
+
+.contents-container td {
+  padding-left: 20px;
+  font-size: 1.5em;
+}
+
+/* ultimos sorteios */
+.dados-soteio {
+  margin: 10px 0;
+  padding: 5px;
+  background-color: #8287b8;
+  width: 100%;
+  box-shadow: 0 9px 13px #1111119c;
+}
+
+.dados-soteio h4,
+.dados-soteio p {
+  margin: 10px 0;
+}
+
+.dados-soteio b {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* ----bootstrap---- */
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}

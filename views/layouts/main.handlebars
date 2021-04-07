@@ -2,19 +2,20 @@
 <html lang="pt">
 <head>
     
-    <link rel="stylesheet" href="/css/principal.css">
-    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Números Mágicos</title>
 </head>
 <body>
-    {{>_header}}     
-        <main>
+    {{>_header}}
+    {{>_nav-bar}}    
+        <main class='container'>
             {{>_msg}}
             {{{body}}}
         </main>
     {{>_footer}}
 </body>
     <script src="/js/myJS.js"></script>
+    <script src='/js/script.js'></script>
 </html>
