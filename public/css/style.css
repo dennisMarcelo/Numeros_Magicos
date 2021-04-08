@@ -241,6 +241,36 @@ footer {
   font-weight: bold;
 }
 
+/* forms */
+.forms-container {
+  width: 85%;
+}
+
+.forms-container h1 {
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.forms-container label {
+  font-size: 1.5em;
+  margin: 15px 0 5px;
+  width: 100%;
+  display: block;
+}
+
+.forms-container input {
+  width: 100%;
+  border-radius: 8px;
+  outline: none;
+  padding: 5px;
+  font-size: 1.2em;
+}
+
+.forms-container button {
+  margin: 30px auto 10px;
+}
+
 /* ----bootstrap---- */
 .alert {
   position: relative;
